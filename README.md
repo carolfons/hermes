@@ -1,3 +1,5 @@
+[![Hermes-Actions-Build](https://github.com/carolfons/hermes/workflows/hermes/badge.svg)](https://github.com/carolfons/hermes/actions)
+
 <h1 align = "center"><img src = "https://github.com/carolfons/hermes/blob/main/logo-hermes.png" width = "170"</h1>
  <h2 align = "center">Uma Aplicação Web Open-Source para Conexão de ONGs e Pessoas</h2>
  
