@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.inatel.hermes.entities.Category;
 import com.inatel.hermes.entities.Ong;
+import com.inatel.hermes.services.CategoryService;
 import com.inatel.hermes.services.OngService;
 
 @RestController
@@ -23,7 +25,7 @@ import com.inatel.hermes.services.OngService;
 public class OngRestController {
 	@Autowired
 	private OngService service;
-
+	
 	@GetMapping
 	public ResponseEntity<List<Ong>> findAll() {
 		List<Ong> ongList = service.findAll();

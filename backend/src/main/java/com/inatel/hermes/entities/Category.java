@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +24,7 @@ public class Category implements Serializable {
 	private String name;
 	private String description;
 
-	
-	@OneToMany(mappedBy = "category")
+	@OneToMany(mappedBy = "category", cascade=CascadeType.ALL)
 	private Set<Ong> ongs = new HashSet<>();
 
 	public Category() {
@@ -53,7 +53,6 @@ public class Category implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getDescription() {
 		return description;

@@ -10,7 +10,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.inatel.hermes.dao.CategoryDAO;
 import com.inatel.hermes.dao.OngDAO;
+import com.inatel.hermes.entities.Category;
 import com.inatel.hermes.entities.Ong;
 import com.inatel.hermes.services.exceptions.DatabaseException;
 import com.inatel.hermes.services.exceptions.ResourceNotFoundException;
@@ -19,25 +21,28 @@ import com.inatel.hermes.services.exceptions.ResourceNotFoundException;
 public class OngService {
 
 	@Autowired
-	private OngDAO repository;
+	private OngDAO ongRepository;
+	
+	@Autowired
+	private CategoryDAO categoryRepository;
 
 	public List<Ong> findAll() {
 
-		return repository.findAll();
+		return ongRepository.findAll();
 	}
 
 	public Ong findById(Long id) {
-		Optional<Ong> object = repository.findById(id);
+		Optional<Ong> object = ongRepository.findById(id);
 		return object.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public Ong insert(Ong obj) {
-		return repository.save(obj);
+		return ongRepository.save(obj);
 	}
 
 	public void delete(Long id) {
 		try {
-			repository.deleteById(id);
+			ongRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
 		} catch (DataIntegrityViolationException e) {
@@ -48,9 +53,9 @@ public class OngService {
 
 	public Ong update(Long id, Ong obj) {
 		try {
-			Ong entity = repository.getOne(id);
+			Ong entity = ongRepository.getOne(id);
 			updateData(entity, obj);
-			return repository.save(entity);
+			return ongRepository.save(entity);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
@@ -64,6 +69,6 @@ public class OngService {
 		entity.setCnpj(obj.getCnpj());
 		entity.setCategory(obj.getCategory());
 		entity.setPassword(obj.getPassword());
-		
+
 	}
 }

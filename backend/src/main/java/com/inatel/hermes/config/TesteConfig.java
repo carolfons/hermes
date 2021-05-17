@@ -16,10 +16,10 @@ import com.inatel.hermes.entities.Ong;
 @Profile("test")
 public class TesteConfig implements CommandLineRunner {
 	@Autowired
-	private OngDAO ongRepository;
+	private OngDAO ongDAO;
 
 	@Autowired
-	private CategoryDAO categoryRepository;
+	private CategoryDAO categoryDAO;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -45,12 +45,14 @@ public class TesteConfig implements CommandLineRunner {
 				"Negócios Sociais enquadram-se nos tipos de ONGs que são caracterizada"
 						+ "s pela posição da pessoa jurídica que visa o lucro, mas tem como objetivo causar um impacto social positivo.");
 
-		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
+		categoryDAO.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
 		
 		
 		Ong ong1 = new Ong(null,"Ong legal", "ong@gmail.com", "35987654321", "ong123", "123123123","Rua dos Ouros 123", cat1);
 		
-		ongRepository.save(ong1);
+		ongDAO.save(ong1);
+		
+		
 	}
 
 }
