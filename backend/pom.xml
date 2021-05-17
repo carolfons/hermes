@@ -4,15 +4,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.6-SNAPSHOT</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>io.github.carolfons</groupId>
+		<artifactId>hermes</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.inatel</groupId>
-	<artifactId>hermes</artifactId>
+	<groupId>io.github.carolfons</groupId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hermes</name>
+	<name>hermes-backend</name>
 	<description>Uma Aplicação Web Open-Source para Conexão de ONGs e Pessoas</description>
 	<properties>
 		<java.version>11</java.version>
