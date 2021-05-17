@@ -8,9 +8,9 @@
 		<artifactId>hermes</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>io.github.carolfons</groupId>
+
 	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${project.parent.version}</version>
 	<name>hermes-backend</name>
 	<description>Uma Aplicação Web Open-Source para Conexão de ONGs e Pessoas</description>
 	<properties>
