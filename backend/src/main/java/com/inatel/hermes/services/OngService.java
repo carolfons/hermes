@@ -10,9 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.inatel.hermes.dao.CategoryDAO;
 import com.inatel.hermes.dao.OngDAO;
-import com.inatel.hermes.entities.Category;
 import com.inatel.hermes.entities.Ong;
 import com.inatel.hermes.services.exceptions.DatabaseException;
 import com.inatel.hermes.services.exceptions.ResourceNotFoundException;
@@ -22,9 +20,6 @@ public class OngService {
 
 	@Autowired
 	private OngDAO ongRepository;
-	
-	@Autowired
-	private CategoryDAO categoryRepository;
 
 	public List<Ong> findAll() {
 
@@ -35,7 +30,7 @@ public class OngService {
 		Optional<Ong> object = ongRepository.findById(id);
 		return object.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
-
+	
 	public Ong insert(Ong obj) {
 		return ongRepository.save(obj);
 	}
@@ -67,7 +62,6 @@ public class OngService {
 		entity.setPhone(obj.getPhone());
 		entity.setAddress(obj.getAddress());
 		entity.setCnpj(obj.getCnpj());
-		entity.setCategory(obj.getCategory());
 		entity.setPassword(obj.getPassword());
 
 	}

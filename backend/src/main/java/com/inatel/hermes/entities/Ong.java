@@ -6,11 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_ong")
@@ -27,18 +23,12 @@ public class Ong implements Serializable {
 	private String password;
 	private String cnpj;
 	private String address;
-
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "category_id")
-	private Category category = new Category();
+	private String description;
 
 	public Ong() {
-
 	}
 
-	public Ong(Long id, String name, String email, String phone, String password, String cnpj, String address,
-			Category category) {
+	public Ong(Long id, String name, String email, String phone, String password, String cnpj, String address, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,7 +37,8 @@ public class Ong implements Serializable {
 		this.password = password;
 		this.cnpj = cnpj;
 		this.address = address;
-		this.category = category;
+		this.description = description;
+
 	}
 
 	public Long getId() {
@@ -106,12 +97,12 @@ public class Ong implements Serializable {
 		this.address = address;
 	}
 
-	public Category getCategory() {
-		return category;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
