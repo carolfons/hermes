@@ -10,34 +10,34 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.inatel.hermes.dao.OngDAO;
-import com.inatel.hermes.entities.Ong;
+import com.inatel.hermes.dao.UsuarioDAO;
+import com.inatel.hermes.entities.Usuario;
 import com.inatel.hermes.services.exceptions.DatabaseException;
 import com.inatel.hermes.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class OngService {
+public class UsuarioService {
 
 	@Autowired
-	private OngDAO ongDAO;
+	private UsuarioDAO usuarioDAO;
 
-	public List<Ong> findAll() {
+	public List<Usuario> findAll() {
 
-		return ongDAO.findAll();
+		return usuarioDAO.findAll();
 	}
 
-	public Ong findById(Long id) {
-		Optional<Ong> object = ongDAO.findById(id);
+	public Usuario findById(Long id) {
+		Optional<Usuario> object = usuarioDAO.findById(id);
 		return object.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
-	public Ong insert(Ong obj) {
-		return ongDAO.save(obj);
+	public Usuario insert(Usuario obj) {
+		return usuarioDAO.save(obj);
 	}
 
 	public void delete(Long id) {
 		try {
-			ongDAO.deleteById(id);
+			usuarioDAO.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
 		} catch (DataIntegrityViolationException e) {
@@ -46,22 +46,22 @@ public class OngService {
 		}
 	}
 
-	public Ong update(Long id, Ong obj) {
+	public Usuario update(Long id, Usuario obj) {
 		try {
-			Ong entity = ongDAO.getOne(id);
+			Usuario entity = usuarioDAO.getOne(id);
 			updateData(entity, obj);
-			return ongDAO.save(entity);
+			return usuarioDAO.save(entity);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}
 
-	private void updateData(Ong entity, Ong obj) {
+	private void updateData(Usuario entity, Usuario obj) {
 		entity.setName(obj.getName());
 		entity.setEmail(obj.getEmail());
 		entity.setPhone(obj.getPhone());
 		entity.setAddress(obj.getAddress());
-		entity.setCnpj(obj.getCnpj());
+		entity.setCpf(obj.getCpf());
 		entity.setPassword(obj.getPassword());
 
 	}

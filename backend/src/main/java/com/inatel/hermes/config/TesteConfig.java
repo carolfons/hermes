@@ -1,18 +1,25 @@
 package com.inatel.hermes.config;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.inatel.hermes.dao.OngDAO;
+import com.inatel.hermes.dao.UsuarioDAO;
 import com.inatel.hermes.entities.Ong;
+import com.inatel.hermes.entities.Usuario;
 
 @Configuration
 @Profile("test")
 public class TesteConfig implements CommandLineRunner {
 	@Autowired
 	private OngDAO ongDAO;
+	
+	@Autowired
+	private UsuarioDAO usuarioDAO;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -25,7 +32,10 @@ public class TesteConfig implements CommandLineRunner {
 		ongDAO.save(ong1);
 		ongDAO.save(ong2);
 		
+		Usuario usuario1 = new Usuario(null, "andre", "andre@inatel.br", "35992258033", "andre123", "123456789", "Rua dos anjos 123");
+		Usuario usuario2 = new Usuario(null, "carol", "caroL@inatel.br", "35123123123", "carol123", "987654321", "Rua da casa da Carol 321");
 		
+		usuarioDAO.saveAll(Arrays.asList(usuario1, usuario2));
 	}
 
 }
