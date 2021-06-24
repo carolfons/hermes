@@ -1,16 +1,24 @@
 package com.inatel.hermes.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario implements Serializable {
+public class Usuario implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,12 +32,17 @@ public class Usuario implements Serializable {
 	private String cpf;
 	private String address;
 
+
+	@ManyToMany
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "nomeRole"))
+	private List<Role> roles;
+
 	public Usuario() {
 
 	}
 
-	public Usuario(Long id, String name, String email, String phone, String password, String cpf, String address) {
-		super();
+	public Usuario(Long id, String name, String email, String phone, String password, String cpf, String address,
+			List<Role> roles) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -37,6 +50,7 @@ public class Usuario implements Serializable {
 		this.password = password;
 		this.cpf = cpf;
 		this.address = address;
+		this.roles = roles;
 	}
 
 	public Long getId() {
@@ -71,10 +85,6 @@ public class Usuario implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -93,6 +103,14 @@ public class Usuario implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override
@@ -117,6 +135,48 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return (Collection<? extends GrantedAuthority>) this.roles;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return this.password;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 

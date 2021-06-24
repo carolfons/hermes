@@ -65,4 +65,10 @@ public class UsuarioService {
 		entity.setPassword(obj.getPassword());
 
 	}
+
+	public Usuario findByEmail(String email) {
+		
+		Optional<Usuario> object = usuarioDAO.findByEmail(email);
+		return object.orElseThrow(() -> new ResourceNotFoundException(email));
+	}
 }

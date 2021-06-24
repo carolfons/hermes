@@ -30,7 +30,7 @@ public class OngService {
 		Optional<Ong> object = ongDAO.findById(id);
 		return object.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
-	
+
 	public Ong insert(Ong obj) {
 		return ongDAO.save(obj);
 	}
@@ -42,7 +42,6 @@ public class OngService {
 			throw new ResourceNotFoundException(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());
-
 		}
 	}
 
@@ -63,6 +62,5 @@ public class OngService {
 		entity.setAddress(obj.getAddress());
 		entity.setCnpj(obj.getCnpj());
 		entity.setPassword(obj.getPassword());
-
 	}
 }
