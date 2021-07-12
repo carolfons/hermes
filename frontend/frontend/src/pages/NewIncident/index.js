@@ -41,11 +41,11 @@ export default function NewIncident() {
     <div className="new-incident-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Be The Hero" />
+          <img src={logoImg} alt="logo" />
           <h1> Cadastrar Novo Caso </h1>
           <p> Descreva o caso detalhadamente para encontrar um herói para resolver isso. </p>
           <Link className="back-link" to="/profile">
-            <FiArrowLeft size={16} color="#e02041" />
+            <FiArrowLeft size={16} color="#006BE2" />
             Voltar para Home
           </Link>
         </section>

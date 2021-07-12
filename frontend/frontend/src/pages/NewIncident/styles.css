@@ -23,9 +23,15 @@
   width: 100%;
   max-width: 380px;
 }
+.new-incident-container section img{
+  height:350px;
+  width:100%;
+  margin-top:-100px;
+}
 
 .new-incident-container .content section h1 {
   margin: 64px 0 32px;
+  margin-top:-50px;
   font-size: 32px;
 }
 
