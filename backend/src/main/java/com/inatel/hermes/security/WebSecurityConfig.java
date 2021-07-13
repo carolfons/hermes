@@ -9,9 +9,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -20,20 +23,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// configuração de acesso de ongs.
-		http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/ongs/**").hasAnyRole("USER","ADMIN")
+		http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/ongs/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/ongs/**").hasRole("ADMIN").antMatchers(HttpMethod.PUT, "/ongs/**")
 				.hasRole("ADMIN").antMatchers(HttpMethod.DELETE, "/ongs/**").hasRole("ADMIN").and().csrf().disable()
 				.formLogin().disable();
 
 		// configurando acesso de usuarios pelos proprios usuarios
-		http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/usuarios/**")
-				.hasAnyRole("ADMIN", "USER").antMatchers(HttpMethod.POST, "/usuarios/**").hasAnyRole("ADMIN", "USER")
+		http.cors().and().authorizeRequests().antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.POST, "/usuarios/**").permitAll()
 				.antMatchers(HttpMethod.PUT, "/usuarios/**").hasAnyRole("ADMIN", "USER")
 				.antMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN").and().csrf().disable().formLogin()
 				.disable();
 
 		// autorização pra acessar o banco de dados pelos admins
-		http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**")
+				.hasRole("ADMIN");
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	}
@@ -46,6 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/images/**");
+	}
+
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST", "PUT",
+				"DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	}
 
 }

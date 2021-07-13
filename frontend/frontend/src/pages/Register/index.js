@@ -11,11 +11,11 @@ import logoImg from '../../assets/logo.png'
 export default function Register() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [whatsapp, setWhatsapp] = useState('')
-  const [city, setCity] = useState('')
-  const [uf, setUf] = useState('')
+  const [phone, setPhone] = useState('')
+  const [address, setAddress] = useState('')
+  const [password, setPassword] = useState('')
 
-  const history = useHistory()
+  // const history = useHistory()
 
   async function handleRegister(e) {
     e.preventDefault()
@@ -23,13 +23,13 @@ export default function Register() {
     const data = {
       name,
       email,
-      whatsapp,
-      city,
-      uf,
+      phone,
+      address,
+      password,
     }
 
     try {
-      const response = await api.post('ongs', data)
+      const response = await api.post('/usuarios', data)
 
       //alert(`Seu ID de acesso: ${response.data.id}`)
       alert('Cadastro feito com sucesso')
@@ -53,12 +53,12 @@ export default function Register() {
           </Link>
         </section>
         <form onSubmit={handleRegister}>
-          <input placeholder="Nome da ONG" value={name} onChange={e => setName(e.target.value)} />
+          <input placeholder="Nome do Usuário" value={name} onChange={e => setName(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-          <input placeholder="WhatsApp" value={whatsapp} onChange={e => setWhatsapp(e.target.value)} />
+          <input placeholder="WhatsApp" value={phone} onChange={e => setPhone(e.target.value)} />
+          <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} />
           <div className="input-group">
-            <input placeholder="Cidade" value={city} onChange={e => setCity(e.target.value)} />
-            <input placeholder="UF" value={uf} onChange={e => setUf(e.target.value)} style={{ width: 80 }} />
+            <input placeholder="Endereço" value={address} onChange={e => setAddress(e.target.value)} />
           </div>
           <button className="button" type="submit"> Cadastrar </button>
         </form>
