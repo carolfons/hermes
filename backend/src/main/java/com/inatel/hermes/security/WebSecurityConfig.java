@@ -10,9 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -28,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// configurando acesso de usuarios pelos proprios usuarios
 		http.cors().and().authorizeRequests().antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.POST, "/usuarios/**").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.POST, "/usuarios/**").permitAll()
 				.antMatchers(HttpMethod.PUT, "/usuarios/**").hasAnyRole("ADMIN", "USER")
 				.antMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN").and().csrf().disable().formLogin()
 				.disable();
@@ -51,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("GET", "POST", "PUT",
+		registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST", "PUT",
 				"DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	}
 

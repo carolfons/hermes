@@ -29,10 +29,9 @@ export default function Register() {
 
     try {
       const response = await api.post('/usuarios', data)
-      if(response.status===200){
+
       alert(`Seu ID de acesso: ${response.data.id}`)
-      console.log(data)
-      }
+
       // history.push('/')
     } catch (err) {
       alert('Erro no cadastro, tente novamente')
@@ -55,7 +54,7 @@ export default function Register() {
           <input placeholder="Nome do Usuário" value={name} onChange={e => setName(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input placeholder="WhatsApp" value={phone} onChange={e => setPhone(e.target.value)} />
-          <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} style={{ width: 150 }} />
+          <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} />
           <div className="input-group">
             <input placeholder="Endereço" value={address} onChange={e => setAddress(e.target.value)} />
           </div>

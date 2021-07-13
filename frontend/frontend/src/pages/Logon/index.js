@@ -33,8 +33,9 @@ export default function Logon() {
         <img src={logoImg} alt="Hermes Logo" />
 
         <form onSubmit={handleLogin}>
-          <h1> Faça seu Logon </h1>
-          <input placeholder="Sua ID" value={id} onChange={e => setId(e.target.value)} />
+          <h1> Faça seu Login </h1>
+          <input placeholder="E-mail" value={id} onChange={e => setId(e.target.value)} />
+          <input placeholder="Senha" value={id} onChange={e => setId(e.target.value)} />
           <button className="button" type="submit"> Entrar </button>
           <Link className="back-link" to="/register">
             <FiLogIn size={16} color="#006BE2" />
