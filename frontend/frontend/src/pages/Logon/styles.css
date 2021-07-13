@@ -27,6 +27,10 @@
   font-size: 32px;
   margin-bottom: 32px;
 }
+
+.logon-container section.form form input{
+  margin-bottom:20px;
+}
 .principalImage{
   width:50%;
 }

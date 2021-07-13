@@ -11,17 +11,21 @@ import heroesImg from '../../assets/heroes.png'
 
 export default function Logon() {
   const [id, setId] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const history = useHistory()
 
   async function handleLogin(e) {
     e.preventDefault()
     try {
-      const response = await api.post('sessions', { id })
+      const response = await api.post('sessions', { email, password })
 
-      localStorage.setItem('ongId', id)
+      localStorage.setItem('email', email)
+      localStorage.setItem('password', password)
       localStorage.setItem('ongName', response.data.name)
 
-      history.push('/profile')
+      history.push('/usuarios')
     } catch (err) {
       alert('Falha no login, tente novamente.')
     }
@@ -33,8 +37,9 @@ export default function Logon() {
         <img src={logoImg} alt="Hermes Logo" />
 
         <form onSubmit={handleLogin}>
-          <h1> Faça seu Logon </h1>
-          <input placeholder="Sua ID" value={id} onChange={e => setId(e.target.value)} />
+          <h1> Faça seu Login </h1>
+          <input placeholder="Seu Email" value={id} onChange={e => setId(e.target.value)} />
+          <input type="password" placeholder="Senha" value={id} />
           <button className="button" type="submit"> Entrar </button>
           <Link className="back-link" to="/register">
             <FiLogIn size={16} color="#006BE2" />
