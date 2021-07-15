@@ -11,7 +11,7 @@
 </p>
  
  <h2> <img src = "https://github.com/carolfons/hermes/blob/main/frontend/frontend/src/assets/logo-hermes-2.png" height = "auto" width = "30"> &nbsp Descrição </h2>
- <p> As Organizações Não Governamentais (ONGs) apesar de receberem uma ajuda financeira do governo, ainda possuem diversos desafios econômicos para se manter em pé. Muitas ONGs possuem pouca visibilidade devida a pequena divulgação dos projetos sociais, dificultando assim a captação de recursos. Além disso a pandemia imposta pelo covid-19 trouxe também  diversos impactos nas organizações sociais entre elas, a perda de apoio financeiro, a paralisação de atividades, entre outros. Nesse contexto a Hermes foi criada para permitir que as ONGs pudessem se conectar ao máximo de pessoas e colaboradores que queriam se engajar nas causas das ONGs e contribuir com doações e divulgação. </p>
+ <p> As Organizações Não Governamentais (ONGs) apesar de receberem uma ajuda financeira do governo, ainda possuem diversos desafios econômicos para se manter em pé. Muitas ONGs possuem pouca visibilidade devida a pequena divulgação dos projetos sociais, dificultando assim a captação de recursos. Além disso a pandemia imposta pelo covid-19 trouxe também  diversos impactos nas organizações sociais entre elas, a perda de apoio financeiro, a paralisação de atividades, entre outros. Nesse contexto a Hermes foi criada para permitir que as ONGs pudessem se conectar ao máximo de pessoas e colaboradores que queiram se engajar nas causas das ONGs e contribuir com doações e divulgação. </p>
  
  
  <h2> <img src = "https://github.com/carolfons/hermes/blob/main/frontend/frontend/src/assets/logo-hermes-2.png" height = "auto" width = "30"> &nbsp Tecnologias utilizadas </h2>
