@@ -16,7 +16,7 @@
  
  <h2> <img src = "https://github.com/carolfons/hermes/blob/main/frontend/frontend/src/assets/logo-hermes-2.png" height = "auto" width = "30"> &nbsp Tecnologias utilizadas </h2>
  <ul>
- <li> Fornt-end: <a href="https://pt-br.reactjs.org/"> ReactJs </a> </li>
+ <li> Front-end: <a href="https://pt-br.reactjs.org/"> ReactJs </a> </li>
  <li> Back-end: <a href="https://spring.io/"> Spring, Spring Boot e Spring MVC </a> </li>
  <li> Compilação: <a href="maven.apache.org/what-is-maven.html"> Maven </a> </li>
 </ul>
