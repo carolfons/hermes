@@ -15,7 +15,7 @@ export default function Register() {
   const [address, setAddress] = useState('')
   const [password, setPassword] = useState('')
 
-  // const history = useHistory()
+  const history = useHistory()
 
   async function handleRegister(e) {
     e.preventDefault()
