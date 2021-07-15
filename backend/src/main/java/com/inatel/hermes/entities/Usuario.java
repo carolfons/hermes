@@ -32,7 +32,6 @@ public class Usuario implements Serializable, UserDetails {
 	private String cpf;
 	private String address;
 
-
 	@ManyToMany
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "nomeRole"))
 	private List<Role> roles;
@@ -111,6 +110,12 @@ public class Usuario implements Serializable, UserDetails {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password="
+				+ password + ", cpf=" + cpf + ", address=" + address + ", roles=" + roles + "]";
 	}
 
 	@Override

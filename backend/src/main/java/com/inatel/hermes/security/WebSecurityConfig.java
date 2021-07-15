@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// configurando acesso de usuarios pelos proprios usuarios
 		http.cors().and().authorizeRequests().antMatchers(HttpMethod.GET, "/usuarios/**").hasAnyRole("ADMIN", "USER")
 				.antMatchers(HttpMethod.POST, "/usuarios/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/session/**").permitAll()
 				.antMatchers(HttpMethod.PUT, "/usuarios/**").hasAnyRole("ADMIN", "USER")
 				.antMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN").and().csrf().disable().formLogin()
 				.disable();

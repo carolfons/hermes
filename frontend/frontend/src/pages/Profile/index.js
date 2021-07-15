@@ -13,6 +13,9 @@ export default function Profile() {
   const [incidents, setIncidents] = useState([])
   const history = useHistory()
   const ongId = localStorage.getItem('ongId')
+  const nomeUsuario = localStorage.getItem('userName')
+  const usuario = localStorage.getItem('usuario')
+  //console.log(usuario.data)
   // const ongName = localStorage.getItem('ongName')
 
   useEffect(() => {
@@ -48,9 +51,9 @@ export default function Profile() {
     <div className="profile-container">
       <header>
         <img src={logoImg} alt="logo" />
-        <span> Bem-vindo(a) </span>
+        <span> Olá <p> {nomeUsuario}</p></span>
 
-        <Link className="button" to="/incidents/new"> Cadastrar novo caso </Link>
+        <Link className="button" to="/incidents/new" roles={"ROLE_ADMIN"}> Cadastrar novo caso </Link>
         <button onClick={handleLogout} type="button">
           <FiPower size={18} color="006BE2" />
         </button>

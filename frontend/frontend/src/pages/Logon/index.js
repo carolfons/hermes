@@ -10,7 +10,7 @@ import logoImg from '../../assets/logo.png'
 import heroesImg from '../../assets/heroes.png'
 
 export default function Logon() {
-  const [id, setId] = useState('')
+  //const [id, setId] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,15 +19,16 @@ export default function Logon() {
   async function handleLogin(e) {
     e.preventDefault()
     try {
-      const response = await api.post('sessions', { email, password })
-
+      const response = await api.post('session', { email, password })
+      localStorage.setItem('userName', response.data.name)
+      localStorage.setItem('usuario', response.data)
       localStorage.setItem('email', email)
       localStorage.setItem('password', password)
-      localStorage.setItem('ongName', response.data.name)
-
-      history.push('/usuarios')
+      //localStorage.setItem('ongName', response.data.name)
+      console.log(response.data)
+      history.push('/profile')
     } catch (err) {
-      alert('Falha no login, tente novamente.')
+      alert('Usuário ou Senha inválidos')
     }
   }
 
@@ -38,8 +39,8 @@ export default function Logon() {
 
         <form onSubmit={handleLogin}>
           <h1> Faça seu Login </h1>
-          <input placeholder="Seu Email" value={id} onChange={e => setId(e.target.value)} />
-          <input type="password" placeholder="Senha" value={id} />
+          <input placeholder="Seu Email" value={email} onChange={e => setEmail(e.target.value)} required={true}/>
+          <input type="password" placeholder="Senha" value={password} onChange={e => setPassword(e.target.value)} required={true} />
           <button className="button" type="submit"> Entrar </button>
           <Link className="back-link" to="/register">
             <FiLogIn size={16} color="#006BE2" />

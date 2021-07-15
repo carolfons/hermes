@@ -31,6 +31,11 @@ public class UsuarioService {
 		return object.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
+	public Usuario findByEmailAndPassword(String email, String senha) {
+		Optional<Usuario> object = usuarioDAO.findByEmailAndPassword(email, senha);
+		return object.orElseThrow(() -> new ResourceNotFoundException("Falha no Login"));
+	}
+	
 	public Usuario insert(Usuario obj) {
 		return usuarioDAO.save(obj);
 	}
