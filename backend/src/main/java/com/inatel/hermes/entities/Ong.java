@@ -2,6 +2,7 @@ package com.inatel.hermes.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Ong implements Serializable {
 	private String password;
 	private String cnpj;
 	private String address;
+	
+	@Column(length=2000) 
 	private String description;
 
 	public Ong() {

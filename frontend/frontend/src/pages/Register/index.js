@@ -45,19 +45,19 @@ export default function Register() {
         <section>
           <img src={logoImg} alt="Hermes logo" />
           <h1> Cadastro </h1>
-          <p> Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG. </p>
+          <p> Faça seu cadastro, entre na plataforma e ajude instituições a continuar trabalhando em prol de um Brasil com menos desigualdade. </p>
           <Link className="back-link" to="/">
             <FiArrowLeft size={16} color="#006BE2" />
             Voltar para o Login
           </Link>
         </section>
         <form onSubmit={handleRegister}>
-          <input placeholder="Nome do Usuário" value={name} onChange={e => setName(e.target.value)} required="true" />
-          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required="true"/>
-          <input placeholder="WhatsApp" value={phone} onChange={e => setPhone(e.target.value)}  required="true"/>
-          <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required="true"/>
+          <input placeholder="Nome do Usuário" value={name} onChange={e => setName(e.target.value)} required={true} />
+          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required={true}/>
+          <input placeholder="WhatsApp" value={phone} onChange={e => setPhone(e.target.value)}  required={true}/>
+          <input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required={true}/>
           <div className="input-group">
-            <input placeholder="Endereço" value={address} onChange={e => setAddress(e.target.value)}  required="true"/>
+            <input placeholder="Endereço" value={address} onChange={e => setAddress(e.target.value)}  required={true}/>
           </div>
           <button className="button" type="submit"> Cadastrar </button>
         </form>
